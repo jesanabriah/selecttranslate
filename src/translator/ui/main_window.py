@@ -398,13 +398,14 @@ class TranslatorWindow(Gtk.Window):
         about_dialog.set_transient_for(self)
         about_dialog.set_modal(True)
         about_dialog.set_program_name("SelectTranslate")
-        about_dialog.set_version("1.0.0")
+        about_dialog.set_version("1.0.2")
         about_dialog.set_comments("Simple translator for selected text")
         about_dialog.set_website("https://github.com/jesanabriah/selecttranslate")
         about_dialog.set_website_label("GitHub Repository")
         about_dialog.set_authors(["Jorge Sanabria"])
         about_dialog.set_copyright("© 2025 Jorge Sanabria")
         about_dialog.set_license_type(Gtk.License.GPL_3_0)
+        about_dialog.set_logo(None)  # Hide logo to avoid broken image placeholder
         about_dialog.run()
         about_dialog.destroy()
     
