@@ -55,13 +55,6 @@ PROVIDER_CONFIGS = {
     }
 }
 
-# Dictionary configuration
-DICTIONARY_CONFIG = {
-    "command": "dict",
-    "timeout": 5,  # seconds
-    "max_lines": 8,  # lines to extract from dict output
-    "skip_lines": 2,  # lines to skip from beginning
-}
 
 # Clipboard monitoring configuration
 CLIPBOARD_CONFIG = {
@@ -107,7 +100,6 @@ def get_config() -> Dict[str, Any]:
         },
         "window": WINDOW_CONFIG,
         "translation": TRANSLATION_CONFIG.copy(),
-        "dictionary": DICTIONARY_CONFIG,
         "clipboard": CLIPBOARD_CONFIG,
         "positioning": POSITIONING_CONFIG,
         "ui": UI_CONFIG,

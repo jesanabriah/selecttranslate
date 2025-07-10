@@ -13,14 +13,13 @@ def test_get_config():
     assert "app" in config
     assert "window" in config
     assert "translation" in config
-    assert "dictionary" in config
     assert "clipboard" in config
     assert "positioning" in config
     assert "ui" in config
     assert "paths" in config
     
     # Check app section
-    assert config["app"]["name"] == "SelectTranslator"
+    assert config["app"]["name"] == "SelectTranslate"
     assert config["app"]["version"] == "1.0.0"
     
     # Check window config

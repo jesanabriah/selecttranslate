@@ -1,5 +1,6 @@
 """Tests for translation engine."""
 
+import subprocess
 import pytest
 from unittest.mock import patch, MagicMock
 from translator.core.translator import TranslationEngine
@@ -13,9 +14,9 @@ def translation_engine():
 
 def test_translation_engine_init(translation_engine):
     """Test translation engine initialization."""
-    assert translation_engine.language_pair == "eng-spa"
-    assert translation_engine.timeout == 10
-    assert translation_engine.engine == "apertium"
+    assert translation_engine.provider_name == "apertium"
+    assert translation_engine.source_lang == "en"
+    assert translation_engine.target_lang == "es"
 
 
 def test_get_word_count(translation_engine):
@@ -23,31 +24,30 @@ def test_get_word_count(translation_engine):
     assert translation_engine.get_word_count("hello") == 1
     assert translation_engine.get_word_count("hello world") == 2
     assert translation_engine.get_word_count("  hello   world  ") == 2
-    assert translation_engine.get_word_count("") == 1  # split() on empty string returns ['']
+    assert translation_engine.get_word_count("") == 0  # Empty string has 0 words
 
 
 @patch('subprocess.run')
 def test_translate_success(mock_run, translation_engine):
     """Test successful translation."""
-    # Mock successful subprocess call
-    mock_result = MagicMock()
-    mock_result.returncode = 0
-    mock_result.stdout = "hola"
-    mock_run.return_value = mock_result
+    # Mock subprocess calls - one for language pair lookup, one for translation
+    mock_list_result = MagicMock()
+    mock_list_result.returncode = 0
+    mock_list_result.stdout = "eng-spa\nspa-eng\n"
+    
+    mock_translate_result = MagicMock()
+    mock_translate_result.returncode = 0
+    mock_translate_result.stdout = "hola"
+    
+    mock_run.side_effect = [mock_list_result, mock_translate_result]
     
     success, result = translation_engine.translate("hello")
     
     assert success is True
     assert result == "hola"
     
-    # Verify subprocess was called correctly
-    mock_run.assert_called_once_with(
-        ['apertium', 'eng-spa'],
-        input="hello",
-        text=True,
-        capture_output=True,
-        timeout=10
-    )
+    # Verify subprocess was called twice (list pairs + translate)
+    assert mock_run.call_count == 2
 
 
 @patch('subprocess.run')

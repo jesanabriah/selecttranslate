@@ -1,16 +1,17 @@
-# SelectTranslator
+# SelectTranslate
 
 A modern, professional GTK3-based real-time translator with intelligent positioning and elegant design.
 
 ## Features
 
-- **Real-time Translation**: Automatic translation using Apertium engine
+- **Multiple Translation Providers**: Support for Apertium (offline), Google Translate (online), and LibreTranslate (open source)
+- **Real-time Translation**: Automatic translation using configurable translation engines
 - **Intelligent Positioning**: Smart window positioning that doesn't cover selected text
-- **Dictionary Integration**: Word definitions for single-word translations
-- **Clipboard Monitoring**: Automatic translation of selected text from any application
-- **Dynamic Layouts**: Different layouts for phrases vs. individual words
-- **Modern UI**: Beautiful gradient design with responsive interface
+- **Clipboard Monitoring**: Automatic translation of selected text from any application using xsel
+- **Modern UI**: Beautiful gradient design with responsive GTK3 interface
 - **Professional Architecture**: Modular, well-documented, and tested codebase
+- **Configurable**: Hierarchical configuration system with user overrides
+
 
 ## Requirements
 
@@ -20,13 +21,13 @@ The application requires the following system tools:
 
 ```bash
 # Ubuntu/Debian
-sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 apertium apertium-eng-spa dict xsel xdotool
+sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 apertium apertium-eng-spa xsel xdotool
 
 # Fedora
-sudo dnf install python3-gobject gtk3-devel apertium dict xsel xdotool
+sudo dnf install python3-gobject gtk3-devel apertium xsel xdotool
 
 # Arch Linux
-sudo pacman -S python-gobject gtk3 apertium dict xsel xdotool
+sudo pacman -S python-gobject gtk3 apertium xsel xdotool
 ```
 
 ### Python Dependencies
@@ -92,8 +93,7 @@ options:
 
 1. **Manual Translation**: Type text in the "Origen" field and click the translate button (🔄)
 2. **Automatic Selection**: Select any text in any application - it will be automatically translated
-3. **Word Definitions**: Single words will show definitions alongside translations
-4. **Clear Content**: Click the clear button (🗑️) to reset all fields
+3. **Clear Content**: Click the clear button (🗑️) to reset all fields
 
 ## Project Structure
 
@@ -102,7 +102,6 @@ selecttranslate/
 ├── src/translator/          # Main application package
 │   ├── core/               # Core business logic
 │   │   ├── translator.py   # Translation engine
-│   │   ├── dictionary.py   # Dictionary lookup
 │   │   └── clipboard.py    # Clipboard monitoring
 │   ├── ui/                 # User interface
 │   │   ├── main_window.py  # Main window
@@ -192,7 +191,6 @@ Key configuration sections:
 
 - **Window**: Size, positioning, appearance
 - **Translation**: Engine settings, timeouts, language pairs
-- **Dictionary**: Lookup settings and parsing
 - **Clipboard**: Monitoring intervals and text limits
 - **UI**: Styling, spacing, button sizes
 
@@ -202,10 +200,9 @@ The application follows a clean, modular architecture:
 
 ### Core Components
 
-- **TranslationEngine**: Handles text translation via Apertium
-- **DictionaryLookup**: Provides word definitions
-- **ClipboardMonitor**: Monitors clipboard for text selections
-- **WindowPositioner**: Intelligent window positioning
+- **TranslationEngine**: Handles text translation via multiple providers (Apertium, Google, LibreTranslate)
+- **ClipboardMonitor**: Monitors clipboard for text selections using xsel
+- **WindowPositioner**: Intelligent window positioning using xdotool
 
 ### UI Components
 
@@ -247,9 +244,8 @@ type(scope): description
 
 1. **GTK Import Error**: Install `python3-gi` and GTK development packages
 2. **Translation Not Working**: Install `apertium` and language pairs
-3. **No Dictionary**: Install `dict` package
-4. **Clipboard Not Working**: Install `xsel`
-5. **Positioning Issues**: Install `xdotool`
+3. **Clipboard Not Working**: Install `xsel`
+4. **Positioning Issues**: Install `xdotool`
 
 ### Debug Mode
 
@@ -271,10 +267,11 @@ This project is licensed under the GNU General Public License v3 - see the [LICE
 
 ## Acknowledgments
 
-- **Apertium**: Translation engine
+- **Apertium**: Offline translation engine
+- **Google Translate**: Online translation service
+- **LibreTranslate**: Open source translation service
 - **GTK**: GUI framework
 - **PyGObject**: Python GTK bindings
-- **dict**: Dictionary lookup tool
 
 ## Changelog
 

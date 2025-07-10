@@ -1,1 +1,1 @@
-"""Test suite for SelectTranslator."""
+"""Test suite for SelectTranslate."""

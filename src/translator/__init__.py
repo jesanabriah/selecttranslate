@@ -1,4 +1,4 @@
-"""SelectTranslator Application.
+"""SelectTranslate Application.
 
 A GTK3-based real-time translator with intelligent positioning.
 """
@@ -10,14 +10,13 @@ __description__ = "A simple GTK3-based real-time translator"
 
 from .config import get_config
 from .ui import TranslatorWindow
-from .core import TranslationEngine, DictionaryLookup, ClipboardMonitor
+from .core import TranslationEngine, ClipboardMonitor
 from .utils import setup_logging, WindowPositioner
 
 __all__ = [
     "get_config",
     "TranslatorWindow", 
     "TranslationEngine",
-    "DictionaryLookup", 
     "ClipboardMonitor",
     "setup_logging",
     "WindowPositioner"

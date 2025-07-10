@@ -423,7 +423,7 @@ def main():
     # Set up logging
     setup_logging(level="INFO", console=True)
     
-    logger.info("Starting SelectTranslator")
+    logger.info("Starting SelectTranslate")
     
     # Create and show main window
     app = TranslatorWindow()

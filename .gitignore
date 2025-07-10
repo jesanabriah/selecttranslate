@@ -152,7 +152,7 @@ config/
 temp/
 tmp/
 
-# SelectTranslator specific
+# SelectTranslate specific
 translator.log*
 user_config/
 .selecttranslate/

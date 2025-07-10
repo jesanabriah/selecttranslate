@@ -58,7 +58,7 @@ def parse_arguments():
 
 def check_dependencies():
     """Check if required system dependencies are available."""
-    from .core import TranslationEngine, DictionaryLookup, ClipboardMonitor
+    from .core import TranslationEngine, ClipboardMonitor
     from .utils import WindowPositioner
     
     issues = []
@@ -68,10 +68,6 @@ def check_dependencies():
     if not engine.is_available():
         issues.append("Apertium translation engine not found")
     
-    # Check dictionary
-    dictionary = DictionaryLookup()
-    if not dictionary.is_available():
-        issues.append("Dictionary tool (dict) not found")
     
     # Check clipboard monitoring
     clipboard = ClipboardMonitor()
