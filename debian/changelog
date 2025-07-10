@@ -1,0 +1,12 @@
+selecttranslate (1.0.0-1) unstable; urgency=medium
+
+  * Initial release of SelectTranslate
+  * Instant translation of selected text using Apertium engine
+  * Automatic text selection monitoring
+  * Simple GTK3 interface with dynamic layouts
+  * Dictionary lookup functionality
+  * Smart cursor-relative window positioning
+  * Clean and intuitive user experience
+  * System package dependencies instead of pip packages
+
+ -- Jorge Sanabria <js@jorels.com>  Wed, 09 Jul 2025 12:00:00 +0000

@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_build:
+	PYTHONPATH=src python3 -m compileall src/
+
+override_dh_auto_install:
+	dh_auto_install
+	# Install the application files
+	mkdir -p debian/selecttranslate/usr/lib/python3/dist-packages/translator
+	cp -r src/translator/* debian/selecttranslate/usr/lib/python3/dist-packages/translator/
+	
+	# Install the executable script
+	mkdir -p debian/selecttranslate/usr/bin
+	echo '#!/usr/bin/env python3' > debian/selecttranslate/usr/bin/selecttranslate
+	echo 'import sys' >> debian/selecttranslate/usr/bin/selecttranslate
+	echo 'sys.path.insert(0, "/usr/lib/python3/dist-packages")' >> debian/selecttranslate/usr/bin/selecttranslate
+	echo 'from translator.main import main' >> debian/selecttranslate/usr/bin/selecttranslate
+	echo 'if __name__ == "__main__":' >> debian/selecttranslate/usr/bin/selecttranslate
+	echo '    main()' >> debian/selecttranslate/usr/bin/selecttranslate
+	chmod +x debian/selecttranslate/usr/bin/selecttranslate
+	
+	# Install desktop file
+	mkdir -p debian/selecttranslate/usr/share/applications
+	cp debian/selecttranslate.desktop debian/selecttranslate/usr/share/applications/
+	
+	# Install CSS assets
+	mkdir -p debian/selecttranslate/usr/share/selecttranslate
+	cp -r assets/* debian/selecttranslate/usr/share/selecttranslate/ || true
+
+override_dh_auto_test:
+	# Skip tests during package build (can be enabled later)
+	true

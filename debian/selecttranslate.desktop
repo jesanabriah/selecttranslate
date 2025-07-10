@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SelectTranslate
+Name[es]=SelectTranslate
+Comment=Simple translator for selected text
+Comment[es]=Traductor simple para texto seleccionado
+Exec=selecttranslate
+Icon=applications-office
+Terminal=false
+StartupNotify=true
+Categories=Office;Utility;
+Keywords=translate;translation;select;text;simple;
+Keywords[es]=traducir;traducción;seleccionar;texto;simple;

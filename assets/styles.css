@@ -1,0 +1,120 @@
+/* SelectTranslator GTK3 Styles */
+
+/* Main window background */
+window {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Card container styling */
+.card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 10px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 2px solid #8b5cf6;
+}
+
+/* Section title labels */
+.section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+}
+
+/* Text input field */
+.text-input {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    color: #f7fafc;
+    border: 2px solid #68d391;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.text-input:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 0 3px rgba(255,215,0,0.4), 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Translation output field */
+.translation-output {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: #d1fae5;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    min-height: 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Definition output field */
+.definition-output {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    color: #dbeafe;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 13px;
+    min-height: 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Primary button styling */
+.btn-primary {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    box-shadow: 0 6px 16px rgba(245,158,11,0.4);
+}
+
+/* Default button styling */
+button {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    border: 2px solid #ef4444;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    box-shadow: 0 6px 16px rgba(220,38,38,0.4);
+}
+
+/* Custom scrollbar styling */
+scrollbar {
+    background: transparent;
+}
+
+scrollbar slider {
+    background: rgba(226,232,240,0.3);
+    border-radius: 4px;
+    min-width: 8px;
+    min-height: 8px;
+}
+
+scrollbar slider:hover {
+    background: rgba(226,232,240,0.5);
+}
+
+scrollbar slider:active {
+    background: rgba(226,232,240,0.7);
+}
