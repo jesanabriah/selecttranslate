@@ -398,14 +398,29 @@ class TranslatorWindow(Gtk.Window):
         about_dialog.set_transient_for(self)
         about_dialog.set_modal(True)
         about_dialog.set_program_name("SelectTranslate")
-        about_dialog.set_version("1.0.2")
+        about_dialog.set_version("1.0.3")
         about_dialog.set_comments("Simple translator for selected text")
         about_dialog.set_website("https://github.com/jesanabriah/selecttranslate")
         about_dialog.set_website_label("GitHub Repository")
         about_dialog.set_authors(["Jorge Sanabria"])
         about_dialog.set_copyright("© 2025 Jorge Sanabria")
         about_dialog.set_license_type(Gtk.License.GPL_3_0)
-        about_dialog.set_logo(None)  # Hide logo to avoid broken image placeholder
+        
+        # Try different approaches to hide the logo
+        try:
+            # Method 1: Use a system icon that exists
+            about_dialog.set_logo_icon_name("applications-office")
+        except:
+            try:
+                # Method 2: Create empty pixbuf
+                from gi.repository import GdkPixbuf
+                empty_pixbuf = GdkPixbuf.Pixbuf.new(GdkPixbuf.Colorspace.RGB, True, 8, 1, 1)
+                empty_pixbuf.fill(0x00000000)  # Transparent
+                about_dialog.set_logo(empty_pixbuf)
+            except:
+                # Method 3: Hide logo area completely
+                about_dialog.set_logo(None)
+        
         about_dialog.run()
         about_dialog.destroy()
     

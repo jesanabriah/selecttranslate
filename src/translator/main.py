@@ -25,7 +25,7 @@ def parse_arguments():
     parser.add_argument(
         "--version",
         action="version",
-        version="SelectTranslate 1.0.2"
+        version="SelectTranslate 1.0.3"
     )
     
     parser.add_argument(
@@ -94,7 +94,7 @@ def main():
         console=not args.no_console
     )
     
-    logger.info("Starting SelectTranslate v1.0.2")
+    logger.info("Starting SelectTranslate v1.0.3")
     
     # Check system dependencies
     dependency_issues = check_dependencies()

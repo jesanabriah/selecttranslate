@@ -6,7 +6,7 @@ from typing import Dict, Any
 
 # Application metadata
 APP_NAME = "SelectTranslate"
-APP_VERSION = "1.0.2"
+APP_VERSION = "1.0.3"
 APP_DESCRIPTION = "A simple GTK3-based translator that translates selected text instantly"
 
 # Window configuration
