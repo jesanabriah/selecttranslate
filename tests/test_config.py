@@ -20,7 +20,7 @@ def test_get_config():
     
     # Check app section
     assert config["app"]["name"] == "SelectTranslate"
-    assert config["app"]["version"] == "1.0.0"
+    assert config["app"]["version"] == "1.0.2"
     
     # Check window config
     assert config["window"]["default_width"] == 420

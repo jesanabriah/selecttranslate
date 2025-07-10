@@ -3,7 +3,7 @@
 A GTK3-based real-time translator with intelligent positioning.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 __author__ = "Jorge Sanabria"
 __email__ = "js@jorels.com"
 __description__ = "A simple GTK3-based real-time translator"

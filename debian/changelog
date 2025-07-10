@@ -1,3 +1,21 @@
+selecttranslate (1.0.2-1) unstable; urgency=low
+
+  * Fix configuration persistence bug for provider selection
+  * Configuration window now properly loads saved user preferences
+  * Minor bug fixes and improvements
+
+ -- Jorge Sanabria <js@jorels.com>  Thu, 10 Jul 2025 14:00:00 +0000
+
+selecttranslate (1.0.1-1) unstable; urgency=low
+
+  * Remove dictionary functionality to simplify codebase
+  * Focus on core translation features only
+  * Cleanup code and remove unused dependencies
+  * Update documentation to reflect actual functionality
+  * Minor performance improvements
+
+ -- Jorge Sanabria <js@jorels.com>  Thu, 10 Jul 2025 12:00:00 +0000
+
 selecttranslate (1.0.0-1) unstable; urgency=medium
 
   * Initial release of SelectTranslate

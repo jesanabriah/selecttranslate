@@ -264,17 +264,30 @@ class ConfigWindow(Gtk.Window):
     
     def _load_current_config(self):
         """Load current configuration into widgets."""
+        from ..config import get_config
+        
+        # Get current configuration (includes user overrides)
+        current_config = get_config()
+        translation_config = current_config.get("translation", {})
+        
         # Load provider selection
-        current_provider = TRANSLATION_CONFIG.get("provider", "apertium")
+        current_provider = translation_config.get("provider", "apertium")
         if current_provider in self.provider_radios:
             self.provider_radios[current_provider].set_active(True)
         
         # Load language selection
-        source_lang = TRANSLATION_CONFIG.get("source_lang", "en")
-        target_lang = TRANSLATION_CONFIG.get("target_lang", "es")
+        source_lang = translation_config.get("source_lang", "en")
+        target_lang = translation_config.get("target_lang", "es")
         
         self.source_combo.set_active_id(source_lang)
         self.target_combo.set_active_id(target_lang)
+        
+        # Load advanced settings
+        self.timeout_spin.set_value(translation_config.get("timeout", 10))
+        self.delay_spin.set_value(translation_config.get("auto_translate_delay", 2000))
+        
+        # Store current config for provider settings loading
+        self.current_full_config = current_config
         
         # Update provider settings
         self._update_provider_settings()
